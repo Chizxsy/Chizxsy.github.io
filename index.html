@@ -37,6 +37,7 @@ var count = 0;
 var score = 0;
 var localStorageName = "hs";
 var highScore;
+var speed = 4;
 
 
 
@@ -68,7 +69,7 @@ function getRandomInt(min, max) {
 function loop() {
   requestAnimationFrame(loop);
   
-  if (++count < 4) {
+  if (++count < speed) {
     return;
   }
   count = 0;
@@ -170,7 +171,9 @@ document.addEventListener('keydown', function(e) {
     snake.dy = grid;
     snake.dx = 0;
   }
-
+else if (e.which === 40 && snake.dy === 0) {
+    speed = speed -3;
+}
 
 });
 // start the game
