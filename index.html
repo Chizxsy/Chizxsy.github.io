@@ -194,6 +194,10 @@ if (e.which === 37 && snake.dx === 0) {
     snake.dy = grid;
     snake.dx = 0;
   }
+	
+else if (e.which === 32 && snake.dy === 0) {
+    speed = speed +100; 
+  }
 
 });
 // start the game
