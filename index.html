@@ -196,9 +196,15 @@ if (e.which === 37 && snake.dx === 0) {
   }
 	
 else if (e.which === 32 && snake.dy === 0) {
-    speed = speed +100; 
-  }
+ speed = speed -2;
+console.log(speed);
+setTimeout(function(){
+   speed = speed +2;
+console.log(speed +"yeet");
+}, 1000);
+ 
 
+  }
 });
 // start the game
 
