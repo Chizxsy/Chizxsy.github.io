@@ -24,7 +24,6 @@ v<!DOCTYPE html>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
-
 var grd = context.createLinearGradient(0, 0, 800, 0);
 grd.addColorStop(0, "red");
 grd.addColorStop(0.14, "orange");
@@ -37,8 +36,11 @@ grd.addColorStop(1, "violet");
 var grid = 16;
 var count = 0;
 var counter = 0;
+var localStorageName = "hs";
+var highScore;
 
 var speed = 4;
+var score = 0;
 
 
 
@@ -78,6 +80,14 @@ function loop() {
 context.fillStyle = 'white';
 context.font = "40px Georgia";
 context.fillText(counter,30,50);
+
+if (score > localStorage.getItem("highscore")) {
+  localStorage.setItem("highscore", score);
+}
+highscore = +localStorage.getItem("highscore")
+console.log(highscore);
+context.font = "14px Georgia";
+context.fillText(highscore,10,20);
 
 
   // move snake by it's velocity
@@ -129,7 +139,7 @@ context.fillText(counter,30,50);
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
         snake.x = 160;
         snake.y = 160;
-	alert("Yor computer has a level 3 virus");
+	alert("Your computer has a LEVEL 3 virus");
 	counter = 0;
         snake.cells = [];
         snake.maxCells = 4;
