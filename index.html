@@ -17,8 +17,26 @@
   }
 h1 { 
 	position: fixed; 
+color: black;
+justify-content: center;
 	top: 10px;
-	left: 675px;
+	
+}
+.button {
+	position: fixed; 
+	top: 120px;
+	justify-content: center;
+  background-color: orange;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: grey;
 }
   </style>
 </head>
@@ -27,9 +45,16 @@ h1 {
 
 <h1 style="font-size:60px;" >Snake</h1>
 
+<button onclick="myFunction()"class="button">Dark Theme</button>
+<p id="demo"></p>
+
+
 
 <canvas width="800" height="400" id="game"></canvas>
 <script>
+
+
+
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
@@ -47,6 +72,9 @@ var count = 0;
 var counter = 0;
 var localStorageName = "hs";
 var highScore;
+var blk = 'black'; 
+var wt = 'whtie'; 
+
 
 var speed = 1;
 var score = 0;
@@ -86,7 +114,7 @@ function loop() {
   count = 0;
 
   context.clearRect(0,0,canvas.width,canvas.height);
-context.fillStyle = 'black';
+context.fillStyle = blk;
 context.font = "40px Georgia";
 context.fillText(counter,30,50);
 
@@ -124,7 +152,7 @@ context.fillText(highscore,10,20);
     snake.cells.pop();
   }
   // draw apple
-  context.fillStyle = 'black';
+  context.fillStyle = blk;
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
   // draw snake one cell at a time
   context.fillStyle = grd;
@@ -152,6 +180,7 @@ context.fillText(highscore,10,20);
         snake.y = 160;
 	alert("Yor computer has a level 3 virus");
 	counter = 0;
+	speed = 1;
         snake.cells = [];
         snake.maxCells = 4;
         snake.dx = grid;
